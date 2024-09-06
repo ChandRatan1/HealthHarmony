@@ -1,0 +1,46 @@
+﻿@model HealthHarmony2.Models.DietPlan
+@{
+    ViewBag.Title = "EditDietPlan";
+}
+
+
+<h1 class="text-center bg-info"> Edit Exercise</h1>
+
+
+@using (Html.BeginForm("EditDietPlan", "DietPlan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <table class="table table-info table-hover ">
+        <tr>
+            <th>@Html.DisplayNameFor(D => D.DietPlanID)</th>
+            <td> @Html.TextBoxFor(D => D.DietPlanID, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(D => D.DietName)</th>
+            <td> @Html.TextBoxFor(D => D.DietName)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(D => D.DietDescription)</th>
+            <td> @Html.TextBoxFor(D => D.DietDescription)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(D => D.Calories)</th>
+            <td> @Html.TextBoxFor(D => D.Calories)</td>
+        </tr>
+
+        
+        <tr>
+            <th>@Html.DisplayNameFor(D => D.DietPlanImage)</th>
+            <td> <input type="file" name="file" /></td>
+        </tr>
+        <tr>
+
+            <td colspan="2" align="center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </td>
+        </tr>
+
+    </table>
+}
+

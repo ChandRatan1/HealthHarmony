@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+}
+<div class=" bg-gradient-primary bg-danger" id="container">
+    <div class="row justify-content-center ">
+        <div class="col-md-6 text-white ">
+            <h2>Welcome to Health Harmony</h2>
+            <p>Kindly submit your request, and our team will reach out to you shortly..</p>
+            <img src="~/Images/bodybuilding-8536103_1280.png" width="275" height="275" />
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Contact Us</h3>
+                    @using (Html.BeginForm("Success", "ContactUs"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="terms" name="term">
+                            <label class="form-check-label" for="terms">I've read and agree with Terms of Service and our Privacy Policy</label>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary btn-block" disabled>Submit</button>
+                            <button type="button" class="btn btn-primary btn-block">
+                                @Html.ActionLink("LogIn", "LogIn", "Account", new { }, new { @class = "link-light text-decoration-none " })
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    #container {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        min-height: 75vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<script>
+$(document).ready(function() {
+    // Disable submit button initially
+    $('button[type="submit"]').prop('disabled', true);
+
+    // Listen for changes on the checkbox
+    $('#terms').change(function() {
+        if ($(this).is(':checked')) {
+            // If checkbox is checked, enable submit button
+            $('button[type="submit"]').prop('disabled', false);
+        } else {
+            // If checkbox is not checked, disable submit button
+            $('button[type="submit"]').prop('disabled', true);
+        }
+    });
+});
+</script>

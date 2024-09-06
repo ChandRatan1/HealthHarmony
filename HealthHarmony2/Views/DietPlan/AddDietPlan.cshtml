@@ -1,0 +1,47 @@
+﻿@model HealthHarmony2.Models.DietPlan
+@{
+    ViewBag.Title = "AddDietPlan";
+}
+
+
+<h1 class="text-center bg-info"> Add New Diet</h1>
+@using (Html.BeginForm("AddDietPlan", "DietPlan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table class="table table-striped-columns table-info table-hover  ">
+        <tr>
+            <th> @Html.DisplayNameFor(D => D.DietName)</th>
+            <td> @Html.TextBoxFor(D => D.DietName)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(D => D.DietDescription)</th>
+            <td> @Html.TextBoxFor(D => D.DietDescription)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(D => D.Calories)</th>
+            <td> @Html.TextBoxFor(D => D.Calories)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(D => D.DietPlanImage)</th>
+            <td>  <input type="file" name="file" /></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td colspan="2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </td>
+
+        </tr>
+
+    </table>
+
+
+
+
+
+
+
+
+
+}
+

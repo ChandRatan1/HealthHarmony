@@ -1,0 +1,64 @@
+﻿@model IEnumerable<HealthHarmony2.Models.Exercise>
+
+@{
+    ViewBag.Title = "AdminExercise";
+}
+
+<h2>Admin Exercise</h2>
+
+<p>
+    <button class="btn btn-info link-light text-decoration-none">
+        @Html.ActionLink("Create New", "AddExercise", new {}, new { @class = "link-dark text-decoration-none fw-bold" })
+    </button>
+    
+
+</p>
+<table class="table table-success table-striped table-hover text-center" align="center">
+    <tr>
+        
+
+        <th>
+            @Html.DisplayNameFor(model => model.ExerciseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExerciseDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExerciseBodyPart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExerciseImage)
+        </th>
+        <th>
+            Exercise  Action &nbsp &nbsp &nbsp   Link
+        </th>
+    </tr>
+
+    @foreach (var item in Model.AsEnumerable().Reverse())
+    {
+        <tr>
+            
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ExerciseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExerciseDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExerciseBodyPart)
+            </td>
+            <td>
+                <img src="/Uploads/@item.ExerciseImage" width="75px" height="75px" />
+            </td>
+            <td>
+
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Delete", "DeleteExercise", new { id = item.ExerciseID },new { onclick = "return confirm('Are you sure of deleting the record?')", @class = "link-dark text-decoration-none fw-bold" })
+                </button>
+                <button class="btn btn-warning">@Html.ActionLink("Edit", "EditExercise", new { id = item.ExerciseID }, new { @class = "link-dark text-decoration-none fw-bold" })</button>
+            </td>
+        </tr>
+    }
+
+</table>

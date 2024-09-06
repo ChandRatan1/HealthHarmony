@@ -1,0 +1,60 @@
+﻿@model IEnumerable<HealthHarmony2.Models.ExerciseCategory>
+
+@{
+    ViewBag.Title = "AdminCategory";
+}
+
+<h2>Admin Category</h2>
+
+<p>
+    <button class="btn btn-info">@Html.ActionLink("Create New", "AddCategory", new {}, new { @class = "link-dark text-decoration-none fw-bold" })</button>
+    
+</p>
+
+
+<table class="table table-success table-striped table-hover text-center" align="center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryImage)
+        </th>
+        <th>
+            Category Action Links
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryDescription)
+            </td>
+            <td>
+                <img src="/Uploads/@item.CategoryImage" width="75px" height="75px" />
+            </td>
+            <td >
+                <button class="btn btn-danger text-decoration-none">
+                    @Html.ActionLink("Delete", "DeleteCategory", new { id = item.CategoryID },
+new { onclick = "return confirm('Are you sure of deleting the record?')", @class = "link-dark text-decoration-none fw-bold" }) 
+                </button>
+                <button class="btn btn-warning"> @Html.ActionLink("Edit", "EditCategory", new { Id = item.CategoryID }, new {@class= "link-dark text-decoration-none fw-bold" })</button>
+
+
+                @*@Html.ActionLink("Details", "Details", new { Id = item.CategoryID }) |*@
+
+            </td>
+        </tr>
+
+
+    }
+
+</table>

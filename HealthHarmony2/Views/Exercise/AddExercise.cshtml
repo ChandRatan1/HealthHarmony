@@ -1,0 +1,47 @@
+﻿@model HealthHarmony2.Models.Exercise
+@{
+    ViewBag.Title = "AddExercise";
+}
+
+<h1 class="text-center bg-info"> Add New Exercise</h1>
+@using (Html.BeginForm("AddExercise", "Exercise", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table class="table table-striped-columns table-info table-hover  ">
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.ExerciseName)</th>
+            <td> @Html.TextBoxFor(E => E.ExerciseName)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.ExerciseBodyPart)</th>
+            <td> @Html.TextBoxFor(E => E.ExerciseBodyPart)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.ExerciseDescription)</th>
+            <td> @Html.TextBoxFor(E => E.ExerciseDescription)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.ExerciseInstructions)</th>
+            <td>  @Html.TextAreaFor(E => E.ExerciseInstructions)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.Categories)</th>
+            <td>  @Html.DropDownListFor(E => E.ExerciseCategoryId, Model.Categories, "-Select Dept-")</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.ExerciseImage)</th>
+            <td>  <input type="file" name="file" /></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td colspan="2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </td>
+
+        </tr>
+
+    </table>
+    
+   
+}
+

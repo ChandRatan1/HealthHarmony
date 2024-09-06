@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Bootstrap Bundle with Popper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark  navbar navbar-dark bg-secondary">
+        <div class="container">
+            <a href="http://localhost:60379/"> <img src="~/Images/White And Black Modern Abstract Beauty Logo.png" width="75px" height="75px" /></a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "DisplayCategorys", "ExerciseCategory", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Exercise", "DisplayExercises", "Exercise", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Diet Plan", "DisplayDietPlans", "DietPlan", new { area = "" }, new { @class = "nav-link" })</li>
+
+                </ul>
+
+                <!-- Dropdown Button -->
+                <div class="dropdown align-content-center">
+                    <button class="btn btn-secondary " type="button">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            @Html.ActionLink("LogOut", "LogOut", "Account", new { }, new { @class = "link-light text-decoration-none fw-bold" })
+
+                        }
+                        else
+                        {
+                            @Html.ActionLink("LogIn", "LogIn", "Account", new { }, new { @class = "link-light text-decoration-none fw-bold" })
+
+                        }
+                    </button>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("admin"))
+                        {
+
+
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @User.Identity.Name Controls
+                            </button>
+
+                            <!-- Dropdown Menu -->
+                            <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+                                @*<a class="dropdown-item text-decoration-none">@Html.ActionLink("Add Category", "AddCategory", "ExerciseCategory", new { area = "" }, new { @class = "nav-link" })</a>
+                                <a class="dropdown-item text-decoration-none">@Html.ActionLink("Add Exercise", "AddExercise", "Exercise", new { area = "" }, new { @class = "nav-link" })</a>*@
+                                <a class="dropdown-item text-decoration-none">@Html.ActionLink("Exercise", "AdminExercise", "Exercise", new { area = "" }, new { @class = "nav-link" })</a>
+                                <a class="dropdown-item text-decoration-none">@Html.ActionLink("Category", "AdminCategory", "ExerciseCategory", new { area = "" }, new { @class = "nav-link" })</a>
+                                <a class="dropdown-item text-decoration-none">@Html.ActionLink("Diet Plan", "AdminDietExercise", "DietPlan", new { area = "" }, new { @class = "nav-link" })</a>
+
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <button class="btn btn-secondary " type="button">
+
+                            @Html.ActionLink("SignUp", "Signup", "Account", new { }, new { @class = "link-light text-decoration-none fw-bold" })
+                        </button>
+                    }
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+    <div class=" body-content modal-dialog-scrollable  ms-xxl-auto" style="background-color: #878580">
+        @RenderBody()
+        <hr />
+        <footer>
+            <table align="right" style=" padding:20px">
+                <tr>
+                    <td style="padding:20px">&copy; @DateTime.Now.Year - Health Harmony</td>
+                    <td style="padding:20px">@Html.ActionLink("About", "About", "ContactUs", new { area = "" }, new { @class = "nav-link" })</td>
+                    <td style="padding:20px">@Html.ActionLink("Contact", "Contact", "ContactUs", new { area = "" }, new { @class = "nav-link" })</td>
+                </tr>
+            </table>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

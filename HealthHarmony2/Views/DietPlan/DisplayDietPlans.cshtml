@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HealthHarmony2.Models.DietPlan>
+@{
+    ViewBag.Title = "DisplayDietPlans";
+    int a = 0;
+}
+
+
+
+<main>
+    <div class="container">
+        <div class="row">
+            @foreach (var Diet in Model)
+            {
+                a++;
+
+                <div class="col-6" style="padding:50px">
+                    <div class="card">
+                        <a href="http://localhost:60379/DietPlan/DisplayDietPlan/@Diet.DietPlanID" class="link-dark text-decoration-none ">
+                            <img class="card-img-top" src='/Uploads/@Diet.DietPlanImage' alt="No Image" width="250" height="250" />
+                            <div class="card-body">
+                                <h4 class="card-title " style="text-align:center">@Html.DisplayFor(E => Diet.DietName)</h4>
+                                @*<p>@Diet.DietDescription</p>*@
+
+                                <button class="btn btn-outline-success align-content-center card-body fw-bold" style="width:100%"> View</button>
+                                @*@Html.ActionLink("view", "DisplayExercise", new {id=Exercise.ExerciseID})*@
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+            }
+            @if (a == 0)
+            {
+                
+                    <h1 class="bg-warning text-center top-100"> Content Coming Soon !</h1>
+                
+            }
+        </div>
+    </div>
+
+</main>

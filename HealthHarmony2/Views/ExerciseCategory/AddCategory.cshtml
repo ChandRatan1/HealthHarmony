@@ -1,0 +1,36 @@
+﻿@model HealthHarmony2.Models.ExerciseCategory
+@{
+    ViewBag.Title = "AddCategory";
+}
+
+<h1 class="text-center bg-info">Add New Category  </h1>
+@using (Html.BeginForm("AddCategory", "ExerciseCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    <table class="table table-info table-hover table-striped-columns">
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.CategoryName)</th>
+            <td>@Html.TextBoxFor(E => E.CategoryName)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.CategoryDescription)</th>
+            <td>@Html.TextBoxFor(E => E.CategoryDescription)</td>
+        </tr>
+        <tr>
+            <th> @Html.DisplayNameFor(E => E.CategoryImage)</th>
+            <td> <input type="file" name="file" /></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td colspan="2" >
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+}

@@ -1,0 +1,31 @@
+﻿@model HealthHarmony2.Models.DietPlan
+@{
+    ViewBag.Title = "DisplayDietPlan";
+}
+
+<h1 class="text-center">Exercise Details</h1>
+
+<img class="card-img-top" src='/Uploads/@Model.DietPlanImage' alt="No Image" height="450" />
+<table class="table table-success table-striped-columns table-hover modal-dialog-scrollable   ">
+    <tr>
+        <th>@Html.DisplayNameFor(E => E.DietName)</th>
+        <td>@Html.DisplayFor(E => E.DietName)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(E => E.DietDescription)</th>
+        <td>@Html.DisplayFor(E => E.DietDescription)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(E => E.Calories)</th>
+        <td>@Html.DisplayFor(E => E.Calories)</td>
+    </tr>
+   
+    
+    <tr>
+        <td colspan="2">
+            <a href="http://localhost:60379/DietPlan/DisplayDietPlans" class=""><button class="btn btn-warning link-light text-decoration-none fw-bold" style="width:100%;height:50px">Back To More Diet Plans</button></a>
+        </td>
+    </tr>
+   
+
+</table>

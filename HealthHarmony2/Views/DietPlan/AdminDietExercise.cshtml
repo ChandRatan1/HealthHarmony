@@ -1,0 +1,63 @@
+﻿@model IEnumerable<HealthHarmony2.Models.DietPlan>
+@{
+    ViewBag.Title = "AdminDietExercise";
+}
+
+<h2>Admin Diet Plan</h2>
+
+<p>
+    <button class="btn btn-info link-light text-decoration-none">
+        @Html.ActionLink("Create New", "AddDietPlan", new { }, new { @class = "link-dark text-decoration-none fw-bold" })
+    </button>
+
+
+</p>
+<table class="table table-success table-striped table-hover text-center" align="center">
+    <tr>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.DietName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DietDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calories)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DietPlanImage)
+        </th>
+        <th>
+            Exercise  Action &nbsp &nbsp &nbsp   Link
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DietName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DietDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calories)
+            </td>
+            <td>
+                <img src="/Uploads/@item.DietPlanImage" width="75px" height="75px" />
+            </td>
+            <td>
+
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Delete", "DeleteDietPlan", new { id = item.DietPlanID }, new { onclick = "return confirm('Are you sure of deleting the record?')", @class = "link-dark text-decoration-none fw-bold" })
+                </button>
+                <button class="btn btn-warning">@Html.ActionLink("Edit", "EditDietPlan", new { id = item.DietPlanID }, new { @class = "link-dark text-decoration-none fw-bold" })</button>
+            </td>
+        </tr>
+    }
+
+</table>

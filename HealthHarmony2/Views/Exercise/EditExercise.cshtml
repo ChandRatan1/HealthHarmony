@@ -1,0 +1,52 @@
+﻿@model HealthHarmony2.Models.Exercise
+@{
+    ViewBag.Title = "EditExercise";
+}
+
+
+<h1 class="text-center bg-info"> Edit Exercise</h1>
+
+
+@using (Html.BeginForm("EditExercise", "Exercise", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <table class="table table-info table-hover ">
+        <tr>
+            <th>@Html.DisplayNameFor(E => E.ExerciseID)</th>
+            <td> @Html.TextBoxFor(E => E.ExerciseID, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(E => E.ExerciseName)</th>
+            <td> @Html.TextBoxFor(E => E.ExerciseName)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(E => E.ExerciseBodyPart)</th>
+            <td> @Html.TextBoxFor(E => E.ExerciseBodyPart)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(E => E.ExerciseDescription)</th>
+            <td> @Html.TextBoxFor(E => E.ExerciseDescription)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(E => E.ExerciseInstructions)</th>
+            <td> @Html.TextBoxFor(E => E.ExerciseInstructions)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(E => E.Categories)</th>
+            <td> @Html.DropDownListFor(E => E.ExerciseCategoryId, Model.Categories, "-Select Dept-")</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(E => E.ExerciseImage)</th>
+            <td> <input type="file" name="file" /></td>
+        </tr>
+        <tr>
+
+            <td colspan="2" align="center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </td>
+        </tr>
+
+    </table>
+}
+
